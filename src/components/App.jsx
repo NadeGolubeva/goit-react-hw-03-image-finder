@@ -1,4 +1,5 @@
-import { Toaster } from 'react-hot-toast';
+import {
+  Toaster, toast} from 'react-hot-toast';
 
 import { Button } from "./Button/Button";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
@@ -21,14 +22,23 @@ export class App extends Component {
     empty: false,
 }
   
+  // message = () => {
+  //   // toast.error("in");
+  //   return
+  // }
   componentDidUpdate(prevProps, prevState) {
 const {search, page} = this.state
-   if (
+    if (
       prevState.search !== search ||
       prevState.page !== page
     ) {
       this.getData(search, page);
     }
+    // if (prevState.search === search)
+    // {
+    //   console.log("huh");
+    //   //  this.getData(search, page);
+    // } 
   }
       
      getData = (titlePic, page) => {
@@ -73,9 +83,13 @@ const {search, page} = this.state
       return { showModal: !showModal };
     });
   };
-  handleSubmit = search => {
+  handleSubmit = (value) => {
+    if (value === this.state.search) {
+      toast.error('It is the same query');
+      return;
+}
     this.setState({
-    search,
+      search: value,
     images: [],
     page: 1,
     total: 1,
@@ -92,9 +106,14 @@ const {search, page} = this.state
     return (
       <div>
         <Toaster
-          position="top-right"
+          position="top-center"
           toastOptions={{
             duration: 3000,
+     
+            style: {
+              fontSize: '28px',
+              // color: '#fff',
+            }
           }}
         />
         <Searchbar handleSubmit={this.handleSubmit} />

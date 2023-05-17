@@ -8,14 +8,29 @@ export const ImageGallery = ({images, controlModal}) => {
     return (
     
 <ul className={css.gallery}>
-        <ImageGalleryItem
-          controlModal={controlModal}
-          images={images}
-        />
-</ul>
+        {images.map(item => (
+          <ImageGalleryItem item={item} key={item.id} 
+            controlModal={controlModal}
+          onClick={(evt) =>
+            { controlModal (item.largeImageURL, item.tags); }}/>
+        ))}
+     
+      </ul>
+
+      // <ul className={css.gallery}>
+      //   <ImageGalleryItem
+      //     controlModal={controlModal}
+      //     images={images}
+      //   />
+      // </ul>
+      
 )
 }
 ImageGallery.propTypes = {
-  images: PropTypes.array.isRequired,
-  controlModal: PropTypes.func.isRequired,
+  images: PropTypes.shape({
+    webformatURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+  }).isRequired,
+    controlModal: PropTypes.func.isRequired,
 }

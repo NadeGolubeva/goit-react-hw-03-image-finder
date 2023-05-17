@@ -1,11 +1,23 @@
 import css from './ImageGalleryItem.module.css'
 import PropTypes from 'prop-types'; 
 
-export const ImageGalleryItem = ({controlModal, images}) => {
+export const ImageGalleryItem = ({controlModal, item}) => {
     return (
         <>
-        
-        {images.map(item => 
+            <li
+                onClick={(evt) =>
+            { controlModal (item.largeImageURL, item.tags); }}
+                className={css.galleryItem}>
+          <img
+            loading="lazy"
+            className = { css.imageGalleryItemImage } 
+            src={item.webformatURL}
+            alt={item.tags}
+          />
+            </li>
+         
+            
+            {/* {images.map(item => 
             <li key={item.id} onClick={(evt) =>
             { controlModal(item.largeImageURL, item.tags); }}
                 className={css.galleryItem}>
@@ -16,12 +28,20 @@ export const ImageGalleryItem = ({controlModal, images}) => {
             alt={item.tags}
           />
             </li>
-         
-    )}
+    )} */}
         </>
 )
 }
 
+// ImageGalleryItem.propTypes = {
+//   images: PropTypes.arrayOf(PropTypes.object).isRequired, 
+// };
+
 ImageGalleryItem.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired, 
+  item: PropTypes.shape({
+    webformatURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+  }).isRequired,
+    controlModal: PropTypes.func.isRequired,
 };

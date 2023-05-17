@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; 
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
@@ -23,13 +24,6 @@ export class Modal extends Component {
 }
 
   render() {
-
-      // <div className={css.Modal}>{this.props.children}</div> {/* рендеринг дочірніх елементів */}
-//     </div>, modalRoot)
-//   }
-// }
-
-
     return createPortal(
       <div
         className={css.overlay}
@@ -43,4 +37,9 @@ export class Modal extends Component {
 </div>, modalRoot
     )
   }
+}
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 }
