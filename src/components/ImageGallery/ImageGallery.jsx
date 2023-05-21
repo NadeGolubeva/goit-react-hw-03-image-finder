@@ -17,13 +17,7 @@ export const ImageGallery = ({images, controlModal}) => {
      
       </ul>
 
-      // <ul className={css.gallery}>
-      //   <ImageGalleryItem
-      //     controlModal={controlModal}
-      //     images={images}
-      //   />
-      // </ul>
-      
+  
 )
 }
 ImageGallery.propTypes = {

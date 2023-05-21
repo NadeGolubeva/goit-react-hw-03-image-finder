@@ -15,27 +15,10 @@ export const ImageGalleryItem = ({controlModal, item}) => {
             alt={item.tags}
           />
             </li>
-         
-            
-            {/* {images.map(item => 
-            <li key={item.id} onClick={(evt) =>
-            { controlModal(item.largeImageURL, item.tags); }}
-                className={css.galleryItem}>
-          <img
-            loading="lazy"
-            className = { css.imageGalleryItemImage } 
-            src={item.webformatURL}
-            alt={item.tags}
-          />
-            </li>
-    )} */}
+        
         </>
 )
 }
-
-// ImageGalleryItem.propTypes = {
-//   images: PropTypes.arrayOf(PropTypes.object).isRequired, 
-// };
 
 ImageGalleryItem.propTypes = {
   item: PropTypes.shape({
