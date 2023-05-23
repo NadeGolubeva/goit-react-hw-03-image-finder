@@ -22,10 +22,6 @@ export class App extends Component {
     empty: false,
 }
   
-  // message = () => {
-  //   // toast.error("in");
-  //   return
-  // }
   componentDidUpdate(prevProps, prevState) {
 const {search, page} = this.state
     if (
@@ -34,11 +30,6 @@ const {search, page} = this.state
     ) {
       this.getData(search, page);
     }
-    // if (prevState.search === search)
-    // {
-    //   console.log("huh");
-    //   //  this.getData(search, page);
-    // } 
   }
       
      getData = (titlePic, page) => {
